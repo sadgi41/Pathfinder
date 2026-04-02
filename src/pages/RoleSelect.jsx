@@ -52,7 +52,7 @@ const RoleSelect = () => {
             state: { currentRole, targetRole }
           })
         }
-        className="px-6 py-3 rounded-lg bg-blue-600 text-white disabled:opacity-40"
+        className="px-6 py-3 rounded-lg bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition duration-200"
       >
         Continue
       </button>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate } from "react-router-dom";
 import { compareSkills } from "../utils/skillUtils";
 import { generateRoadmap } from "../utils/roadmapUtils";
 import RoadmapTimeline from "../components/roadmap/RoadmapTimeline";
@@ -7,6 +7,8 @@ import RoadmapTimeline from "../components/roadmap/RoadmapTimeline";
 const Roadmap = () => {
  const location = useLocation();
   const state = location.state;
+  const navigate = useNavigate();
+
 
   if (!state || !state.currentRole || !state.targetRole) {
     return <p>Please select roles first.</p>;
@@ -28,7 +30,19 @@ const Roadmap = () => {
       </h2>
 
       <RoadmapTimeline roadmap={roadmap} />
+       <button
+    onClick={() =>
+      navigate("/dashboard", {
+        state: { currentRole, targetRole }
+      })
+    }
+    className="px-6 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 transition duration-200"
+  >
+    View Dashboard
+  </button>
+
     </div>
+
   );
 }
 

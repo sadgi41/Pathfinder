@@ -9,6 +9,7 @@ const SkillGap = () => {
 
     const location = useLocation();
     const state = location.state;
+    
 
     if (!state || !state.currentRole || !state.targetRole) {
         return (
@@ -48,7 +49,7 @@ const SkillGap = () => {
                         state: { currentRole, targetRole }
                     })
                 }
-                className="px-6 py-3 rounded-lg bg-blue-600 text-white"
+                className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
             >
                 Generate Roadmap
             </button>

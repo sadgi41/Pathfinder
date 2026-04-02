@@ -19,7 +19,7 @@ const ThemeToggle = () => {
   return (
    <button
       onClick={() => setDark(!dark)}
-      className="px-3 py-1 rounded-md border border-gray-300 dark:border-gray-700"
+      className="px-3 py-1 rounded-md border border-gray-300 dark:border-gray-700 hover:bg-gray-800 transition duration-200"
     >
       {dark ? "🌙" : "☀️"}
     </button>

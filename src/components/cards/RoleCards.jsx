@@ -1,8 +1,11 @@
 import React from 'react'
+import { motion } from "framer-motion";
 
 const RoleCards = ({ role, selected, onSelect }) => {
   return (
-    <div
+     <motion.div
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 0.98 }}
       onClick={onSelect}
       className={`cursor-pointer rounded-xl border p-4 transition
         ${selected 
@@ -23,7 +26,7 @@ const RoleCards = ({ role, selected, onSelect }) => {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
