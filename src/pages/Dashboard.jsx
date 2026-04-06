@@ -5,18 +5,21 @@ import { generateRoadmap } from "../utils/roadmapUtils";
 import StatsCard from "../components/dashboard/StatsCard";
 import MissingSkills from "../components/dashboard/MissingSkills";
 import ProgressChart from "../components/dashboard/ProgressChart";
+import { usePathfinderStore } from "../store/usePathfinderStore";
 
 
 const Dashboard = () => {
   const location = useLocation();
-  const state = location.state;
+  // const state = location.state;
 
-  if (!state ||!state.currentRole || !state.targetRole) {
+  const { currentRole, targetRole } = usePathfinderStore();
+
+  if (!currentRole || !targetRole) {
     return <p>Please select roles first.</p>;
   }
 
 
-  const { currentRole, targetRole } = state;
+  // const { currentRole, targetRole } = state;
 
   const skillMatrix = compareSkills(
     currentRole.skills,

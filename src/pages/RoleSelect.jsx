@@ -3,10 +3,19 @@ import RoleCard from "../components/cards/RoleCards";
 import { roles } from "../data/roles";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { usePathfinderStore } from "../store/usePathfinderStore";
 
 const RoleSelect = () => {
-  const [currentRole, setCurrentRole] = useState(null);
-  const [targetRole, setTargetRole] = useState(null);
+  /* const [currentRole, setCurrentRole] = useState(null);
+  const [targetRole, setTargetRole] = useState(null); */
+
+   const {
+    currentRole,
+    targetRole,
+    setCurrentRole,
+    setTargetRole
+  } = usePathfinderStore();
+  
   const navigate = useNavigate();
 
   return (
@@ -48,9 +57,7 @@ const RoleSelect = () => {
       <button
         disabled={!currentRole || !targetRole}
         onClick={() =>
-          navigate("/skill-gap", {
-            state: { currentRole, targetRole }
-          })
+           navigate("/skill-gap") 
         }
         className="px-6 py-3 rounded-lg bg-blue-600 text-white disabled:opacity-40 hover:bg-blue-700 transition duration-200"
       >

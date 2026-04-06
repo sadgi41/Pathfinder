@@ -2,16 +2,19 @@ import React from 'react'
 import { useLocation, useNavigate } from "react-router-dom";
 import SkillMatrix from "../components/skills/SkillsMatrix";
 import { compareSkills, calculateReadiness } from "../utils/skillUtils";
+import { usePathfinderStore } from '../store/usePathfinderStore';
 
 const SkillGap = () => {
 
     const navigate = useNavigate();
 
     const location = useLocation();
-    const state = location.state;
+    // const state = location.state;
+
+    const { currentRole, targetRole } = usePathfinderStore();
     
 
-    if (!state || !state.currentRole || !state.targetRole) {
+    if (!currentRole || !targetRole) {
         return (
             <p className="text-gray-500">
                 Please go back and select roles first.
@@ -21,7 +24,7 @@ const SkillGap = () => {
 
 
 
-    const { currentRole, targetRole } = state;
+    // const { currentRole, targetRole } = state;
 
     const skillMatrix = compareSkills(
         currentRole.skills,
@@ -45,9 +48,7 @@ const SkillGap = () => {
 
             <button
                 onClick={() =>
-                    navigate("/roadmap", {
-                        state: { currentRole, targetRole }
-                    })
+                    navigate("/roadmap") 
                 }
                 className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
             >
