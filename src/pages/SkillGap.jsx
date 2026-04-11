@@ -1,18 +1,17 @@
-import React from 'react'
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import SkillMatrix from "../components/skills/SkillsMatrix";
+import SkillsMatrix from "../components/skills/SkillsMatrix";
 import { compareSkills, calculateReadiness } from "../utils/skillUtils";
 import { usePathfinderStore } from '../store/usePathfinderStore';
 
 const SkillGap = () => {
 
     const navigate = useNavigate();
-
     const location = useLocation();
     // const state = location.state;
 
     const { currentRole, targetRole } = usePathfinderStore();
-    
+
 
     if (!currentRole || !targetRole) {
         return (
@@ -22,14 +21,16 @@ const SkillGap = () => {
         );
     }
 
-
-
-    // const { currentRole, targetRole } = state;
-
-    const skillMatrix = compareSkills(
+     const skillMatrix = compareSkills(
         currentRole.skills,
         targetRole.skills
     );
+
+    const missingSkills = skillMatrix.filter(s => !s.hasSkill);
+
+    // const { currentRole, targetRole } = state;
+
+   
 
     const readiness = calculateReadiness(skillMatrix);
 
@@ -44,13 +45,38 @@ const SkillGap = () => {
                 <strong>{targetRole.title}</strong> role.
             </p>
 
-            <SkillMatrix skills={skillMatrix} />
+            <SkillsMatrix skills={skillMatrix} />
+
+            <div className="mt-6">
+              
+                {missingSkills.length === 0 ? (
+                    <p className="text-green-500 font-medium p-16">
+                        🎉 You have all required skills!
+                    </p>
+                ) : (
+                     <div className="py-8">
+      <h3 className="text-xl font-semibold mb-3 text-red-500">
+                    Missing Skills
+                </h3>
+                    <div className="flex py-8 items-center justify-center flex-wrap gap-4">
+                        {missingSkills.map(skill => (
+                            <span
+                                key={skill.name}
+                                className="px-6 py-3 rounded-full bg-red-100 dark:bg-red-900/20 text-sm"
+                            >
+                                {skill.name}
+                            </span>
+                        ))}
+                    </div>
+                    </div>
+                )}
+            </div>
 
             <button
                 onClick={() =>
-                    navigate("/roadmap") 
+                    navigate("/roadmap")
                 }
-                className="px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
+                className="px-6 py-3 m-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
             >
                 Generate Roadmap
             </button>

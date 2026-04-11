@@ -1,11 +1,14 @@
 import React from 'react'
 
-const RoadmapTimeline = (roadmap) => {
+const RoadmapTimeline = ({roadmap}) => {
      if (!Array.isArray(roadmap)) {
     return <p className="text-gray-500">Loading roadmap...</p>;
   }
    return (
     <div className="space-y-4">
+      <p className="text-sm text-gray-500">
+        {roadmap.length} steps to complete
+      </p>
       {roadmap.map(step => (
         <div
           key={step.week}

@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const SkillsMatrix = (skills) => {
-  //console.log("skills:", skills);
-  if (!Array.isArray(skills)) {
-    return <p className="text-gray-500">Loading skills...</p>;
+const SkillsMatrix = ({skills}) => {
+  console.log("skills:", skills);
+  
+   if (!skills) {
+    return <p className="text-gray-500">Loading...</p>;
+  }
+
+  if (skills.length === 0) {
+    return <p className="text-gray-500">No skills available</p>;
   }
 
   return (
