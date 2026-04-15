@@ -13,14 +13,14 @@ const RoleCards = ({ role, selected, onSelect }) => {
           : "border-gray-300 dark:border-gray-700 hover:border-blue-400"}
       `}
     >
-      <h3 className="text-lg font-semibold">{role.title}</h3>
+      <h3 className="text-lg font-semibold tracking-tight">{role.title}</h3>
       <p className="text-sm text-gray-500">{role.level}</p>
 
       <div className="mt-2 flex flex-wrap gap-2">
         {role.skills.map((skill, index) => (
           <span
             key={skill.name + index}
-            className="px-2 py-1 text-xs rounded bg-gray-200 dark:bg-gray-700"
+            className="p-5 text-sm rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700"
           >
             {skill.name} ({skill.level})
           </span>

@@ -36,7 +36,7 @@ const SkillGap = () => {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl tracking-tight font-bold">
                 Skill Gap Analysis
             </h2>
 
@@ -55,7 +55,7 @@ const SkillGap = () => {
                     </p>
                 ) : (
                      <div className="py-8">
-      <h3 className="text-xl font-semibold mb-3 text-red-500">
+      <h3 className="text-xl font-semibold tracking-tight mb-3 text-red-500">
                     Missing Skills
                 </h3>
                     <div className="flex py-8 items-center justify-center flex-wrap gap-4">
@@ -76,7 +76,7 @@ const SkillGap = () => {
                 onClick={() =>
                     navigate("/roadmap")
                 }
-                className="px-6 py-3 m-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
+                className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
             >
                 Generate Roadmap
             </button>

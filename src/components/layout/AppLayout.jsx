@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 function AppLayout() {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen text-black dark:text-white bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
       <Navbar />
        <motion.main
         initial={{ opacity: 0, y: 10 }}

@@ -28,7 +28,7 @@ const Roadmap = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">
+      <h2 className="text-2xl font-bold tracking-tight">
         Your Learning Roadmap
       </h2>
 
@@ -37,7 +37,7 @@ const Roadmap = () => {
     onClick={() =>
        navigate("/dashboard") 
     }
-    className="px-6 py-3 rounded-lg bg-green-600 text-white hover:bg-green-700 transition duration-200"
+    className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
   >
     View Dashboard
   </button>
