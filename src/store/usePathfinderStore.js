@@ -7,9 +7,18 @@ const usePathfinderStore = create(
     (set) => ({
       currentRole: null,
       targetRole: null,
+      completedSkills: [],
 
       setCurrentRole: (role) => set({ currentRole: role }),
       setTargetRole: (role) => set({ targetRole: role }),
+
+      toggleSkill: (skillName) =>
+        set((state) => ({
+          completedSkills: state.completedSkills.includes(skillName)
+            ? state.completedSkills.filter(s => s !== skillName)
+            : [...state.completedSkills, skillName]
+        })),
+
 
       reset: () => set({ currentRole: null, targetRole: null })
     }),

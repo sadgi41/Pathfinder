@@ -12,7 +12,17 @@ const Dashboard = () => {
   const location = useLocation();
   // const state = location.state;
 
-  const { currentRole, targetRole } = usePathfinderStore();
+  const currentRole = usePathfinderStore(
+    (state) => state.currentRole
+  );
+
+  const targetRole = usePathfinderStore(
+    (state) => state.targetRole
+  );
+
+  const completedSkills = usePathfinderStore(
+    (state) => state.completedSkills
+  );
 
   if (!currentRole || !targetRole) {
     return <p>Please select roles first.</p>;
@@ -22,31 +32,43 @@ const Dashboard = () => {
   // const { currentRole, targetRole } = state;
 
   const skillMatrix = compareSkills(
-    currentRole.skills,
-    targetRole.skills
-  );
+    currentRole?.skills || [],
+    targetRole?.skills || []
+  ).map((skill) => ({
+    ...skill,
+    isCompleted: completedSkills.includes(skill.name)
+  }));
 
   const readiness = calculateReadiness(skillMatrix);
 
-  const missingSkills = skillMatrix.filter(s => !s.hasSkill);
+  const missingSkills = skillMatrix.filter(
+    skill => !skill.isCompleted
+  );
 
   const roadmap = generateRoadmap(skillMatrix);
 
 
-  // Fake progress data for chart
-  const chartData = roadmap.map((step, index) => ({
-    week: `W${step.week}`,
-    progress: Math.min((index + 1) * 10, 100)
-  }));
+  const completedCount =
+    skillMatrix.filter(s => s.isCompleted).length;
 
-   
-   if (missingSkills.length === 0) {
-  return (
-    <p className="text-green-500 font-medium">
-      🎉 You are fully ready!
-    </p>
-  );
-}
+  const chartData = [
+    { week: "Start", progress: 0 },
+    {
+      week: "Now",
+      progress: Math.round(
+        (completedCount / skillMatrix.length) * 100
+      )
+    }
+  ];
+
+
+  if (missingSkills.length === 0) {
+    return (
+      <p className="text-green-500 font-medium">
+        🎉 You are fully ready!
+      </p>
+    );
+  }
 
   return (
     <div className="grid md:grid-cols-1 gap-6">
@@ -55,7 +77,7 @@ const Dashboard = () => {
       <ProgressChart data={chartData} />
 
       <MissingSkills skills={missingSkills} />
-   
+
     </div>
   );
 }

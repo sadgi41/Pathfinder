@@ -28,10 +28,10 @@ export function compareSkills(currentSkills, targetSkills) {
 export function calculateReadiness(skillMatrix) {
   const total = skillMatrix.length;
 
-  const scoreSum = skillMatrix.reduce(
-    (sum, skill) => sum + skill.score,
-    0
-  );
+  const scoreSum = skillMatrix.reduce((sum, skill) => {
+  if (skill.isCompleted) return sum + 1;
+  return sum + skill.score;
+}, 0);
 
   return Math.round((scoreSum / total) * 100);
 }

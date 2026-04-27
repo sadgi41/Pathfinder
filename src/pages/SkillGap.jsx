@@ -12,6 +12,11 @@ const SkillGap = () => {
 
     const { currentRole, targetRole } = usePathfinderStore();
 
+    const completedSkills = usePathfinderStore(
+        (state) => state.completedSkills
+    );
+
+console.log("completedSkills:", completedSkills);
 
     if (!currentRole || !targetRole) {
         return (
@@ -20,17 +25,23 @@ const SkillGap = () => {
             </p>
         );
     }
+const skillMatrix = compareSkills(
+  currentRole?.skills || [],
+  targetRole?.skills || []
+).map((skill) => ({
+  ...skill,
+  isCompleted:
+  completedSkills.includes(skill.name) ||
+  skill.score === 1
+}));
 
-     const skillMatrix = compareSkills(
-        currentRole.skills,
-        targetRole.skills
-    );
-
-    const missingSkills = skillMatrix.filter(s => !s.hasSkill);
+   const missingSkills = skillMatrix.filter(
+  (skill) => skill.score < 1 && !skill.isCompleted
+);
 
     // const { currentRole, targetRole } = state;
 
-   
+
 
     const readiness = calculateReadiness(skillMatrix);
 
@@ -48,26 +59,26 @@ const SkillGap = () => {
             <SkillsMatrix skills={skillMatrix} />
 
             <div className="mt-6">
-              
+
                 {missingSkills.length === 0 ? (
                     <p className="text-green-500 font-medium p-16">
                         🎉 You have all required skills!
                     </p>
                 ) : (
-                     <div className="py-8">
-      <h3 className="text-xl font-semibold tracking-tight mb-3 text-red-500">
-                    Missing Skills
-                </h3>
-                    <div className="flex py-8 items-center justify-center flex-wrap gap-4">
-                        {missingSkills.map(skill => (
-                            <span
-                                key={skill.name}
-                                className="px-6 py-3 rounded-full bg-red-100 dark:bg-red-900/20 text-sm"
-                            >
-                                {skill.name}
-                            </span>
-                        ))}
-                    </div>
+                    <div className="py-8">
+                        <h3 className="text-xl font-semibold tracking-tight mb-3 text-red-500">
+                            Missing Skills
+                        </h3>
+                        <div className="flex py-8 items-center justify-center flex-wrap gap-4">
+                            {missingSkills.map(skill => (
+                                <span
+                                    key={skill.name}
+                                    className="px-6 py-3 rounded-full bg-red-100 dark:bg-red-900/20 text-sm"
+                                >
+                                    {skill.name}
+                                </span>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>

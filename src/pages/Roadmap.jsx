@@ -10,8 +10,9 @@ const Roadmap = () => {
   // const state = location.state;
   const navigate = useNavigate();
 
-  const { currentRole, targetRole } = usePathfinderStore();
-
+const currentRole = usePathfinderStore((state) => state.currentRole);
+const targetRole = usePathfinderStore((state) => state.targetRole);
+const completedSkills = usePathfinderStore((state) => state.completedSkills);
 
   if (!currentRole || !targetRole) {
     return <p>Please select roles first.</p>;
@@ -19,12 +20,19 @@ const Roadmap = () => {
 
   // const { currentRole, targetRole } = state;
 
-  const skillMatrix = compareSkills(
-    currentRole.skills,
-    targetRole.skills
-  );
+const skillMatrix = compareSkills(
+  currentRole?.skills || [],
+  targetRole?.skills || []
+).map((skill) => ({
+  ...skill,
+  isCompleted: completedSkills.includes(skill.name),
+}));
 
-  const roadmap = generateRoadmap(skillMatrix);
+console.log(skillMatrix);
+
+const roadmap = generateRoadmap(skillMatrix);
+
+console.log("roadmap:", roadmap);
 
   return (
     <div className="space-y-6">
