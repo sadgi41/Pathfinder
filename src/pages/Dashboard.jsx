@@ -42,8 +42,10 @@ const Dashboard = () => {
   const readiness = calculateReadiness(skillMatrix);
 
   const missingSkills = skillMatrix.filter(
-    skill => !skill.isCompleted
-  );
+  skill =>
+    skill.score < 1 &&
+    !skill.isCompleted
+);
 
   const roadmap = generateRoadmap(skillMatrix);
 
