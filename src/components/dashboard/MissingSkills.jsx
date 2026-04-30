@@ -3,7 +3,7 @@ import React from 'react'
 const MissingSkills = ({ skills }) => {
     return (
         <div className="p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700">
-            <h3 className="text-lg font-semibold tracking-tight mb-4">
+            <h3 className="text-lg font-semibold tracking-tight mb-4 sm:text-2xl lg:text-3xl ">
                 Skills to Improve
             </h3>
 

@@ -47,7 +47,7 @@ const skillMatrix = compareSkills(
 
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl tracking-tight font-bold">
+            <h2 className="text-2xl tracking-tight font-bold sm:text-2xl lg:text-3xl ">
                 Skill Gap Analysis
             </h2>
 
@@ -66,10 +66,10 @@ const skillMatrix = compareSkills(
                     </p>
                 ) : (
                     <div className="py-8">
-                        <h3 className="text-xl font-semibold tracking-tight mb-3 text-red-500">
+                        <h3 className="text-xl font-semibold tracking-tight mb-3 text-red-500 sm:text-2xl lg:text-3xl ">
                             Missing Skills
                         </h3>
-                        <div className="flex py-8 items-center justify-center flex-wrap gap-4">
+                        <div className="flex py-8 items-center justify-center flex-wrap gap-4 text-xs sm:text-sm px-2 sm:px-3 py-1">
                             {missingSkills.map(skill => (
                                 <span
                                     key={skill.name}
@@ -87,7 +87,7 @@ const skillMatrix = compareSkills(
                 onClick={() =>
                     navigate("/roadmap")
                 }
-                className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+                className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition "
             >
                 Generate Roadmap
             </button>

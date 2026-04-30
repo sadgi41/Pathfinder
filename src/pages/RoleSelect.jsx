@@ -51,7 +51,7 @@ const RoleSelect = () => {
   return (
     <div className="space-y-10">
       <section>
-        <h2 className="text-2xl font-bold tracking-tight mb-4">
+        <h2 className="text-2xl font-bold tracking-tight mb-4 sm:text-2xl lg:text-3xl ">
           What is your Current Role?
         </h2>
 
@@ -68,7 +68,7 @@ const RoleSelect = () => {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold tracking-tight mb-4">
+        <h2 className="text-2xl font-bold tracking-tight mb-4 sm:text-2xl lg:text-3xl ">
           What do you want to be your Target Role?
         </h2>
 
@@ -89,7 +89,7 @@ const RoleSelect = () => {
         onClick={() =>
           navigate("/skill-gap")
         }
-        className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+        className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
       >
         Continue
       </button>

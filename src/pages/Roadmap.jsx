@@ -36,7 +36,7 @@ console.log("roadmap:", roadmap);
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold tracking-tight">
+      <h2 className="text-2xl font-bold tracking-tight sm:text-2xl lg:text-3xl ">
         Your Learning Roadmap
       </h2>
 
@@ -45,7 +45,7 @@ console.log("roadmap:", roadmap);
     onClick={() =>
        navigate("/dashboard") 
     }
-    className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+    className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
   >
     View Dashboard
   </button>

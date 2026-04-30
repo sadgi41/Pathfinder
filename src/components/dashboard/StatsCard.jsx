@@ -3,7 +3,7 @@ import React from 'react'
 const StatsCard = ({readiness}) => {
   return (
     <div className="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-300 dark:border-gray-700">
-      <h3 className="text-lg font-semibold tracking-tight mb-2">
+      <h3 className="text-lg font-semibold tracking-tight mb-2 sm:text-2xl lg:text-3xl ">
         Readiness Score
       </h3>
 

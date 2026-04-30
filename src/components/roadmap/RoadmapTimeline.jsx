@@ -13,7 +13,7 @@ const RoadmapTimeline = ({roadmap}) => {
       {roadmap.map(step => (
         <div
           key={step.week}
-          className="p-4 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-300 dark:border-gray-700"
+          className="p-4 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-300 dark:border-gray-700 "
         >
           <p className="text-sm text-gray-500">Week {step.week}</p>
           <h3 className="text-lg font-semibold tracking-tight">{step.title}</h3>
